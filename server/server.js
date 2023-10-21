@@ -1,7 +1,23 @@
-require('dotenv').config();
-const express = require('express');
+import express from "express";
 const app = express();
-const cors = require('cors');
+import cors from "cors";
+import "dotenv/config.js";
+import mongoose from "mongoose";
+
+import { MONGODB_SRV_STRING } from "./constants/config.js";
+
+
+mongoose.set('strictQuery', true);
+mongoose
+  .connect(MONGODB_SRV_STRING)
+  .then((success) => {
+    console.log("Successfuly connected to MongoDB !!");
+  })
+  .catch((err) => {
+    console.log("Error in mongoose connection !");
+    console.log(err);
+  });
+
 
 app.use(express.json());
 app.use(cors());

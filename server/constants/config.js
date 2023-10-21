@@ -1,0 +1,1 @@
+export const MONGODB_SRV_STRING = process.env.MONGODB_SRV_STRING || "gg";
