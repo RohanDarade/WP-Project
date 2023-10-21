@@ -25,3 +25,8 @@ app.use(cors());
 app.listen(8080, () => {
     console.log('Server is running on port 8080');
 });
+
+// 404 pages for development
+app.get("*", (req, res) => {
+    res.status(404).send("API not found :(  <br> ¯\\_(ツ)_/¯");
+  });
