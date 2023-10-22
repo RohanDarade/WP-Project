@@ -3,8 +3,10 @@ const app = express();
 import cors from "cors";
 import "dotenv/config.js";
 import mongoose from "mongoose";
+import userRoutes from "./src/routes/users.js";
+import authRoutes from "./src/routes/auth.js";
 
-import { MONGODB_SRV_STRING } from "./constants/config.js";
+import { MONGODB_SRV_STRING } from "./src/constants/config.js";
 
 
 mongoose.set('strictQuery', true);
@@ -21,6 +23,8 @@ mongoose
 
 app.use(express.json());
 app.use(cors());
+app.use("/api/users", userRoutes);
+app.use("/api/auth", authRoutes);
 
 app.listen(8080, () => {
     console.log('Server is running on port 8080');
